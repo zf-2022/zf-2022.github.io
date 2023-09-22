@@ -145,18 +145,24 @@ main h3 {
     padding: 25px;
     background: linear-gradient(45deg, #75c4c0, #8bcb75);
     margin-top: 35px;
-    font-size: 2em;
+    font-size: 2.5em;
+    text-transform: uppercase;
     color: #fff;
 
+}
+
+.cta-container p {
+    font-weight: 100;
+    font-size: small;
 }
 
 .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ffee00;
+    background-color: #ad4cad;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 20px;
     font-weight: bold;
     margin-top: 15px;
     transition: background-color 0.3s;
