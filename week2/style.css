@@ -85,6 +85,7 @@ nav a:active {
     height: auto;
     width: 100%;
     overflow: hidden;
+    margin-top: 140px;
 }
 
 .centered-banner {
