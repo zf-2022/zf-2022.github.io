@@ -29,13 +29,14 @@ header {
 .banner {
     width: 100%;
     overflow: hidden;
-    margin-top: 200px;
+
 }
 
 .banner img {
     width: 100%;
     height: auto;
     display: block;
+    margin-top: 140px;
 }
 
 
@@ -86,7 +87,6 @@ nav a:active {
     height: auto;
     width: 100%;
     overflow: hidden;
-    margin-top: 200px;
 
 }
 
