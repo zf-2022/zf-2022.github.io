@@ -16,7 +16,7 @@ header {
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: sticky;
+
 }
 
 .headeraH1 {
@@ -43,6 +43,7 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 20px;
+    position: sticky;
 }
 
 nav li {
