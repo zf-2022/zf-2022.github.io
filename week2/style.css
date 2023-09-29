@@ -121,6 +121,7 @@ main h3 {
     flex-wrap: wrap;
     gap: 20px;
     position: relative;
+    margin-top: 20%;
 }
 
 .service-column {
