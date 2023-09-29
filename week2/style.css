@@ -73,6 +73,7 @@ nav ul {
     /* Update the top value to create space below the fixed header */
     top: 95px;
     width: 100%;
+    z-index: 1000;
     /* Remove margin-bottom: 10%; */
 }
 
