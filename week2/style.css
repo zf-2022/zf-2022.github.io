@@ -11,7 +11,7 @@ body {
 
 /* Header Styles */
 header {
-    background: linear-gradient(301deg, #7676c7, #000);
+    /* background: linear-gradient(301deg, #7676c7, #000);
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -19,7 +19,15 @@ header {
     top: 0;
     width: 100%;
     margin-bottom: 20%;
-
+*/
+    background: linear-gradient(301deg, #7676c7, #000);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* Remove margin-bottom: 20%; */
 }
 
 .headeraH1 {
@@ -45,7 +53,7 @@ header {
 
 /* Navigation Styles */
 nav ul {
-    background-color: #333;
+    /* background-color: #333;
     color: #fff;
     text-align: center;
     list-style-type: none;
@@ -55,7 +63,17 @@ nav ul {
     top: 75px;
     width: 100%;
     margin-bottom: 10%;
-
+*/
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    /* Update the top value to create space below the fixed header */
+    top: 95px;
+    width: 100%;
+    /* Remove margin-bottom: 10%; */
 }
 
 nav li {
@@ -84,7 +102,7 @@ nav a:active {
 
 /* Banner Styles */
 .banner-container {
-    display: flex;
+    /*display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
@@ -92,6 +110,16 @@ nav a:active {
     overflow: hidden;
     position: relative;
     margin-top: 20%;
+*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    /* Update margin-top to create space below the fixed header */
+    margin-top: 120px;
 
 }
 
@@ -113,8 +141,9 @@ main {
     margin: 2rem auto;
     padding: 2rem;
     background-color: #fff position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba (0, 0, 0, 0.1);
 }
+
 
 main h3 {
     margin-top: 20px;
