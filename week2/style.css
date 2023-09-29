@@ -6,74 +6,42 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     color: #505050;
+    background: linear-gradient(45deg, #cc8d06, rgb(245, 47, 80));
 }
 
 
 /* Header Styles */
 header {
-    /* background: linear-gradient(301deg, #7676c7, #000);
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    margin-bottom: 20%;
-*/
     background: linear-gradient(301deg, #7676c7, #000);
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-
-    /* Remove margin-bottom: 20%; */
 }
 
 .headeraH1 {
     margin: 0;
-    margin-bottom: 50px;
 }
 
 .banner {
     width: 100%;
     overflow: hidden;
-    position: relative;
-
 }
 
 .banner img {
     width: 100%;
     height: auto;
     display: block;
-    position: relative;
 }
 
 
 /* Navigation Styles */
 nav ul {
-    /* background-color: #333;
-    color: #fff;
-    text-align: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 20px;
-    position: fixed;
-    top: 75px;
-    width: 100%;
-    margin-bottom: 10%;
-*/
     background-color: #333;
     color: #fff;
     text-align: center;
     list-style-type: none;
     margin: 0;
     padding: 20px;
-    /* Update the top value to create space below the fixed header */
-    top: 95px;
-    width: 100%;
-    /* Remove margin-bottom: 10%; */
 }
 
 nav li {
@@ -95,39 +63,20 @@ nav a:hover {
     /* Darker shade for hover */
 }
 
-nav a:active {
-    background-color: #9ac289;
-    /* Darker shade for hover */
-}
-
 /* Banner Styles */
 .banner-container {
-    /*display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin-top: 20%;
-*/
-
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
     width: 100%;
     overflow: hidden;
-    /* Update margin-top to create space below the fixed header */
-    margin-top: 120px;
-
 }
 
 .centered-banner {
     padding: 30px;
     max-width: 80%;
     height: auto;
-    position: relative;
 }
 
 /* Main Content Styles */
@@ -140,10 +89,9 @@ main {
 .services {
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #fff position: relative;
-    box-shadow: 0 0 10px rgba (0, 0, 0, 0.1);
+    background-color: ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 
 main h3 {
     margin-top: 20px;
@@ -155,8 +103,6 @@ main h3 {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    position: relative;
-    margin-top: 20%;
 }
 
 .service-column {
@@ -166,14 +112,12 @@ main h3 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    position: relative;
 }
 
 .service-column img {
-    width: 250px;
+    width: 100%;
     height: auto;
     margin-bottom: 10px;
-    position: relative;
 }
 
 .service-column h3 {
@@ -198,34 +142,26 @@ main h3 {
 /* Call to Action Styles */
 .cta-container {
     text-align: center;
-    padding: 25px;
-    background: linear-gradient(45deg, #75c4c0, #8bcb75);
-    margin-top: 35px;
-    font-size: 2.5em;
-    text-transform: uppercase;
-    color: #fff;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin-top: 30px;
 
-}
-
-.cta-container p {
-    font-weight: 100;
-    font-size: small;
 }
 
 .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ad4cad;
+    background-color: #007BFF;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 5px;
     font-weight: bold;
     margin-top: 15px;
     transition: background-color 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #ffc400;
+    background-color: #7640B3;
 }
 
 /* Footer Styles */
