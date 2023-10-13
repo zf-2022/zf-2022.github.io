@@ -6,6 +6,11 @@
   <title>Gallery - Wanderlust Voyages</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    nav ul {
+      position: fixed;
+      margin-top: -100px;
+    }
+
     .gallery-container {
       margin: 0 auto;
       display: flex;
@@ -34,6 +39,11 @@
 arrows) */
     .container {
       position: relative;
+      background: #617a7c;
+      margin: 20px 40px;
+      margin-top: 13%;
+      height: 500px;
+
     }
 
     /* Hide the images by default */
@@ -105,52 +115,52 @@ arrows) */
     <!---SlideShow--->
     <div class="container">
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">1/8</div>
-        <img src="slideshowImages\1.jpg" alt="Gallery slide show" class="slideshow-img>
+        <img src="slideshowImages\1.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">2/8</div>
         <img src="slideshowImages\2.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">3/8</div>
         <img src="slideshowImages\3.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">4/8</div>
         <img src="slideshowImages\4.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">5/8</div>
         <img src="slideshowImages\5.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">6/8</div>
         <img src="slideshowImages\6.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">7/8</div>
         <img src="slideshowImages\7.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
 
-      <div class=" mySlides">
+      <div class="mySlides">
         <div class="numbertext">8/8</div>
         <img src="slideshowImages\8.jpg" alt="Gallery slide show" class="slideshow-img">
       </div>
     </div>
 
     <a class="prev" onclick="plusSlides(-1)">
-      < /a>
+      < </a>
         <a class="next" onclick="plusSlides(1)">></a>
   </div>
-
+  <!---
   <main class="services">
     <h1>Gallery</h1>
 
@@ -164,12 +174,13 @@ arrows) */
       <img src="images/7.jpeg" alt="Spa Image 7">
       <img src="images/8.jpeg" alt="Spa Image 7">
     </div>
-    <!-- Call to Action -->
-    <section class="cta-container">
-      <h2>Ready to Experience Our Services?</h2>
-      <p>Join us today and discover the difference we can make for you!</p>
-      <a href="contact.html" class="cta-button">Contact Us Now</a>
-    </section>
+    -->
+  <!-- Call to Action -->
+  <section class="cta-container">
+    <h2>Ready to Experience Our Services?</h2>
+    <p>Join us today and discover the difference we can make for you!</p>
+    <a href="contact.html" class="cta-button">Contact Us Now</a>
+  </section>
 
   </main>
   <footer>
@@ -181,6 +192,16 @@ arrows) */
     <p>&copy; 2024 Wanderlust Voyages | Travel Agency. All rights reserved.</p>
   </footer>
   </div>
+
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) {
+      showSlides(slideIndex = + n);
+    }
+  </script>
+
 </body>
 
 </html>
