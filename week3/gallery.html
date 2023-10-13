@@ -39,16 +39,20 @@
 arrows) */
     .container {
       position: relative;
-      background: #617a7c;
-      margin: 20px 40px;
+      background: #617a7c7a;
+      margin: 20px auto;
       margin-top: 13%;
-      height: 500px;
-
+      padding: 20px 40px;
+      width: 50%;
+      text-align: center;
     }
+
 
     /* Hide the images by default */
     .mySlides {
       display: none;
+      overflow: hidden;
+      height: 350px;
     }
 
     /* Add a pointer when hovering over the thumbnail images */
@@ -76,6 +80,11 @@ arrows) */
     /* Position the "next button" to the right */
     .next {
       right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+      left: 0;
       border-radius: 3px 0 0 3px;
     }
 
@@ -114,55 +123,58 @@ arrows) */
 
     <!---SlideShow--->
     <div class="container">
+      <h1>Gallery</h1>
+      <a class="prev" onclick="plusSlides(-1)">
+        < </a>
+          <a class="next" onclick="plusSlides(1)"> > </a>
 
-      <div class="mySlides">
-        <div class="numbertext">1/8</div>
-        <img src="slideshowImages\1.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">1/8</div>
+            <img src="slideshowImages\1.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">2/8</div>
-        <img src="slideshowImages\2.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">2/8</div>
+            <img src="slideshowImages\2.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">3/8</div>
-        <img src="slideshowImages\3.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">3/8</div>
+            <img src="slideshowImages\3.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">4/8</div>
-        <img src="slideshowImages\4.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">4/8</div>
+            <img src="slideshowImages\4.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">5/8</div>
-        <img src="slideshowImages\5.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">5/8</div>
+            <img src="slideshowImages\5.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">6/8</div>
-        <img src="slideshowImages\6.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">6/8</div>
+            <img src="slideshowImages\6.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">7/8</div>
-        <img src="slideshowImages\7.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">7/8</div>
+            <img src="slideshowImages\7.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
 
-      <div class="mySlides">
-        <div class="numbertext">8/8</div>
-        <img src="slideshowImages\8.jpg" alt="Gallery slide show" class="slideshow-img">
-      </div>
+          <div class="mySlides">
+            <div class="numbertext">8/8</div>
+            <img src="slideshowImages\8.jpg" alt="Gallery slide show" class="slideshow-img">
+          </div>
     </div>
 
-    <a class="prev" onclick="plusSlides(-1)">
-      < </a>
-        <a class="next" onclick="plusSlides(1)">></a>
+
+
   </div>
   <!---
   <main class="services">
-    <h1>Gallery</h1>
+    
 
     <div class="gallery-container">
       <img src="images/1.jpeg" alt="Spa Image 1">
@@ -195,11 +207,41 @@ arrows) */
 
 
   <script>
-    let slideIndex = 1;
+    let slideIndex = 1; //declaring variable to keep track of the current slide postion
     showSlides(slideIndex);
+
+    //name elements
+    let slides = document.getElementsByClassName("mySlides");
+
     function plusSlides(n) {
-      showSlides(slideIndex = + n);
+      showSlides(slideIndex += n);
     }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+
+
+
+    // let dots = document.getElementsByClassName("");
+
+
   </script>
 
 </body>
