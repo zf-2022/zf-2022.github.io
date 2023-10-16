@@ -178,21 +178,6 @@ arrows) */
 
 
   </div>
-  <!---
-  <main class="services">
-    
-
-    <div class="gallery-container">
-      <img src="images/1.jpeg" alt="Spa Image 1">
-      <img src="images/2.jpeg" alt="Spa Image 2">
-      <img src="images/3.jpeg" alt="Spa Image 3">
-      <img src="images/4.jpeg" alt="Spa Image 4">
-      <img src="images/5.jpeg" alt="Spa Image 5">
-      <img src="images/6.jpeg" alt="Spa Image 6">
-      <img src="images/7.jpeg" alt="Spa Image 7">
-      <img src="images/8.jpeg" alt="Spa Image 7">
-    </div>
-    -->
   <!-- Call to Action -->
   <section class="cta-container">
     <h2>Ready to Experience Our Services?</h2>
@@ -216,9 +201,9 @@ arrows) */
     let slideIndex = 1; //Creating a variable to store initial slide index
     showSlides(slideIndex);//Call the showSlides function to display the initial slide
 
-    let slides = document.getElementsByClassName("mySlides");  //Get all the elements with the class "mySlides" and store them in this variable
 
-    function plusSlides(n) { //Function to navigate to the previous or next slide
+    //Function to navigate to the previous or next slide
+    function plusSlides(n) {
       showSlides(slideIndex += n);  // Increment or decrement the slideIndex and show the new slide
     }
 
@@ -228,14 +213,16 @@ arrows) */
 
     // Function to display a specific slide
     function showSlides(n) {
+      let slideArray = document.getElementsByClassName("mySlides");//Get all the elements with the class "mySlides" and store them in this variable
+
       let i;
-      if (n > slides.length) { slideIndex = 1 }       // Check if n is greater than the number of slides, set slideIndex to 1
+      if (n > slideArray.length) { slideIndex = 1 }       // Check if n is greater than the number of slides, set slideIndex to 1
       if (n < 1) { slideIndex = slides.length } // Check if n is less than 1, set slideIndex to the last slide
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; // Hide all the slides by setting their display property to "none"
+      for (i = 0; i < slideArray.length; i++) {
+        slideArray[i].style.display = "none"; // Hide all the slides by setting their display property to "none"
       }
 
-      slides[slideIndex - 1].style.display = "block"; /// Display the current slide (slideIndex - 1 is used because arrays are zero-indexed)
+      slideArray[slideIndex - 1].style.display = "block"; /// Display the current slide 
     }
   </script>
 
