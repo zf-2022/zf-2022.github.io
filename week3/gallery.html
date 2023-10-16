@@ -81,10 +81,12 @@ arrows) */
     .next {
       right: 0;
       border-radius: 3px 0 0 3px;
+      margin-top: auto;
     }
 
     .prev {
       left: 0;
+      margin-top: auto;
       border-radius: 3px 0 0 3px;
     }
 
@@ -100,6 +102,10 @@ arrows) */
       font-size: 12px;
       padding: 8px 12px;
       position: absolute;
+    }
+
+    .cta-container {
+      margin: 20px 300px;
     }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -207,41 +213,30 @@ arrows) */
 
 
   <script>
-    let slideIndex = 1; //declaring variable to keep track of the current slide postion
-    showSlides(slideIndex);
+    let slideIndex = 1; //Creating a variable to store initial slide index
+    showSlides(slideIndex);//Call the showSlides function to display the initial slide
 
-    //name elements
-    let slides = document.getElementsByClassName("mySlides");
+    let slides = document.getElementsByClassName("mySlides");  //Get all the elements with the class "mySlides" and store them in this variable
 
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
+    function plusSlides(n) { //Function to navigate to the previous or next slide
+      showSlides(slideIndex += n);  // Increment or decrement the slideIndex and show the new slide
     }
 
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
+    function currentSlide(n) { // Function to navigate to a specific slide by its index
+      showSlides(slideIndex = n);  // Set the slideIndex to the specified index and show that slide
     }
 
-
+    // Function to display a specific slide
     function showSlides(n) {
       let i;
-      let slides = document.getElementsByClassName("mySlides");
-      let dots = document.getElementsByClassName("dot");
-      if (n > slides.length) { slideIndex = 1 }
-      if (n < 1) { slideIndex = slides.length }
+      if (n > slides.length) { slideIndex = 1 }       // Check if n is greater than the number of slides, set slideIndex to 1
+      if (n < 1) { slideIndex = slides.length } // Check if n is less than 1, set slideIndex to the last slide
       for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+        slides[i].style.display = "none"; // Hide all the slides by setting their display property to "none"
       }
 
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].className += " active";
+      slides[slideIndex - 1].style.display = "block"; /// Display the current slide (slideIndex - 1 is used because arrays are zero-indexed)
     }
-
-
-
-
-    // let dots = document.getElementsByClassName("");
-
-
   </script>
 
 </body>
