@@ -79,9 +79,25 @@ block-level display, font size, padding, full width */
         /* Style for input fields with class "success": green border */
         .input-control.success input {
             border-color: #09c372;
+            /* Green border to indicate successful input */
         }
 
-        /* Green border to indicate successful input */
+        /* Style for input fields with class "error": red border */
+        .input-control.error input {
+            border-color: #ff3860;
+            /* Red border to indicate an error in input */
+        }
+
+        /* Style for the error message: text color, font size, and height */
+        .input-control .error {
+            color: #ff3860;
+            /* Red text color for error messages */
+            font-size: 9px;
+            /* Smaller font size for error messages */
+            height: 13px;
+        }
+
+        /* Explicit height to ensure consistent spacing */
     </style>
 </head>
 
@@ -109,19 +125,105 @@ block-level display, font size, padding, full width */
             <input type="password" id="confirm-password" name="confirm-password">
             <div class="error" id="confirm-password-error"></div>
         </div>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
     </form>
 
     <script>
-        const form = document.getElementById("registration-form");
+
+        const form = document.getElementById("form");
         const usernameInput = document.getElementById("username");
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        const confirmPasswordInput = document.getElementById("confirm-password");
         const usernameError = document.getElementById("username-error");
+        const emailInput = document.getElementById("email");
         const emailError = document.getElementById("email-error");
+        const passwordInput = document.getElementById("password");
         const passwordError = document.getElementById("password-error");
+        const confirmPasswordInput = document.getElementById("confirm-password");
         const confirmPasswordError = document.getElementById("confirm-password-error");
+
+
+        // Add a submit event listener to the form
+        form.addEventListener("submit", function (e) {
+            // Initialize validation status for each field
+            let isUsernameValid = validateUsername();
+            let isEmailValid = validateEmail();
+            let isPasswordValid = validatePassword();
+            let isConfirmPasswordValid = validateConfirmPassword();
+
+            // Prevent form submission if any field is invalid
+            if (!isUsernameValid || !isEmailValid || !isPasswordValid || !isConfirmPasswordValid) {
+                e.preventDefault(); // Prevent the form from being submitted
+            }
+        });
+
+        usernameInput.addEventListener("blur", validateUsername);
+        emailInput.addEventListener("blur", validateEmail);
+        passwordInput.addEventListener("blur", validatePassword);
+        confirmPasswordInput.addEventListener("blur", validateConfirmPassword);
+
+        const usernameValue = usernameInput.value.trim();
+        function validateUsername() {
+            if (usernameValue === "") {
+                usernameInput.classList.add("error");
+                usernameError.textContent = "Username cannot be empty";
+                return false; // Return false to indicate invalid input
+            } else {
+                usernameInput.classList.remove("error");
+                usernameInput.classList.add("success");
+                usernameError.textContent = "";
+                return true; // Return true to indicate valid input
+            }
+        }
+
+        // Function to validate the email field
+        function validateEmail() {
+            const emailValue = emailInput.value.trim();
+            const emailRegex = /^[a-zA-Z0-9._-]+@$/;
+            if (emailValue === "") {
+                emailInput.classList.add("error");
+                emailError.textContent = "Email cannot be empty";
+                return false;
+            } else if (!emailRegex.test(emailValue)) {
+                emailInput.classList.add("error");
+                emailError.textContent = "Invalid email format";
+                return false;
+            } else {
+                emailInput.classList.remove("error");
+                emailError.textContent = "";
+                emailInput.classList.add("success");
+                return true;
+            }
+        }
+
+        // Function to validate the password field
+        function validatePassword() {
+            const passwordValue = passwordInput.value;
+            if (passwordValue === "" || passwordValue.length < 8) {
+                passwordInput.classList.add("error");
+                passwordError.textContent = "Password must be at least 8 characters long";
+                return false;
+            } else {
+                passwordInput.classList.remove("error");
+                passwordError.textContent = "";
+                passwordInput.classList.add("success");
+                return true;
+            }
+        }
+
+        // Function to validate the confirm password field
+        function validateConfirmPassword() {
+            const confirmPasswordValue = confirmPasswordInput.value;
+            if (confirmPasswordValue === "" || confirmPasswordValue !== passwordInput.value) {
+                confirmPasswordInput.classList.add("error");
+                confirmPasswordError.textContent = "Passwords do not match";
+                return false;
+            } else {
+                confirmPasswordInput.classList.remove("error");
+                confirmPasswordError.textContent = "";
+                confirmPasswordInput.classList.add("success");
+                return true;
+            }
+        }
+
     </script>
 </body>
 
