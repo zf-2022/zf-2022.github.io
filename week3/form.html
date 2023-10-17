@@ -4,225 +4,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form</title>
     <style>
-        /* Style for the form: setting width, auto margin for centering, padding, 
-background color, border radius for rounded corners, and font size */
         #form {
             width: 300px;
             margin: 20vh auto 0 auto;
-            /* This centers the form vertically and 
-horizontally */
             padding: 20px;
             background-color: whitesmoke;
-            /* Light gray background for the form */
             border-radius: 4px;
-            /* Rounded corners for the form */
             font-size: 12px;
         }
 
-        /* Style for the form's heading: setting the text color and alignment */
         #form h1 {
             color: #0f2027;
-            /* Dark text color for the heading */
             text-align: center;
-            /* Center-align the heading */
         }
 
-        /* Style for the form's button: padding, top margin, full width, text color, 
-background color, no border, and rounded corners */
         #form button {
             padding: 10px;
             margin-top: 10px;
-            /* Space above the button */
             width: 100%;
-            /* Make the button expand the full width of the form */
             color: white;
-            /* White text color for the button */
             background-color: rgb(41, 57, 194);
-            /* Blue background color for the button 
-*/
             border: none;
-            /* Remove the default border */
             border-radius: 4px;
-            /* Rounded corners for the button */
         }
 
-        /* Container for input fields: using flexbox for layout, column direction */
-        .input-control {
-            display: flex;
-            flex-direction: column;
-            /* Stack the children (label, input, error message) 
-vertically */
-        }
-
-        /* Style for input fields inside the container: border style, rounded corners, 
-block-level display, font size, padding, full width */
         .input-control input {
             border: 2px solid #f0f0f0;
-            /* Light gray border for the inputs */
             border-radius: 4px;
-            /* Rounded corners for the inputs */
             display: block;
-            /* Display input field as a block */
             font-size: 12px;
-            /* Text size within the input field */
             padding: 10px;
+            width: 90%;
         }
 
-        /* Remove focus outline from input fields */
         .input-control input:focus {
             outline: 0;
-            /* Remove outline when input is focused */
         }
 
-        /* Style for input fields with class "success": green border */
         .input-control.success input {
             border-color: #09c372;
-            /* Green border to indicate successful input */
         }
 
-        /* Style for input fields with class "error": red border */
         .input-control.error input {
             border-color: #ff3860;
-            /* Red border to indicate an error in input */
         }
 
-        /* Style for the error message: text color, font size, and height */
         .input-control .error {
             color: #ff3860;
-            /* Red text color for error messages */
             font-size: 9px;
-            /* Smaller font size for error messages */
             height: 13px;
         }
-
-        /* Explicit height to ensure consistent spacing */
     </style>
 </head>
 
 <body>
-
-    <form id="form" action="#">
-        <h1>Contact Form</h1>
-        <div class="input-control">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username">
-            <div class="error" id="username-error"></div>
-        </div>
-        <div class="input-control">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
-            <div class="error" id="email-error"></div>
-        </div>
-        <div class="input-control">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-            <div class="error" id="password-error"></div>
-        </div>
-        <div class="input-control">
-            <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm-password">
-            <div class="error" id="confirm-password-error"></div>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+    <div id="form">
+        <form action="#" method="POST">
+            <h1>Contact Form</h1>
+            <div class="input-control">
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username">
+                <div class="error" id="usernameError"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email: </label>
+                <input type="text" id="email" name="email">
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">Password: </label>
+                <input type="text" id="password" name="password">
+                <div class="error" id="passwordError"></div>
+            </div>
+            <div class="input-control">
+                <label for="passwordConfirm">Confirm Password: </label>
+                <input type="text" id="passwordConfirm" name="passwordConfirm">
+                <div class="error" id="passwordConfirmError"></div>
+            </div>
+            <button class="submit">Submit</button>
+        </form>
+    </div>
 
     <script>
-
-        const form = document.getElementById("form");
         const usernameInput = document.getElementById("username");
-        const usernameError = document.getElementById("username-error");
+        const usernameErrorMsg = document.getElementById("usernameError")
+
         const emailInput = document.getElementById("email");
-        const emailError = document.getElementById("email-error");
+        const emailErrorMsg = document.getElementById("emailError")
+
         const passwordInput = document.getElementById("password");
-        const passwordError = document.getElementById("password-error");
-        const confirmPasswordInput = document.getElementById("confirm-password");
-        const confirmPasswordError = document.getElementById("confirm-password-error");
+        const passwordErrorMsg = document.getElementById("passwordError")
 
+        const passwordIConfirmInput = document.getElementById("passwordConfirm");
+        const passwordConfirmErrorMsg = document.getElementById("passwordConfirmError")
 
-        // Add a submit event listener to the form
-        form.addEventListener("submit", function (e) {
-            // Initialize validation status for each field
-            let isUsernameValid = validateUsername();
-            let isEmailValid = validateEmail();
-            let isPasswordValid = validatePassword();
-            let isConfirmPasswordValid = validateConfirmPassword();
+        const inputControl = document.getElementsByClassName("input-control");
 
-            // Prevent form submission if any field is invalid
-            if (!isUsernameValid || !isEmailValid || !isPasswordValid || !isConfirmPasswordValid) {
-                e.preventDefault(); // Prevent the form from being submitted
+        const form = document.querySelector('form');
+
+        //    Prevention of form submission when inputs are invalid.
+        form.addEventListener("submit", function (event) {
+            if (!validateUsername() || !validateEmail() || !validatePassword() || !validatePasswordConfirm()) {
+                event.preventDefault();
             }
         });
 
-        usernameInput.addEventListener("blur", validateUsername);
-        emailInput.addEventListener("blur", validateEmail);
-        passwordInput.addEventListener("blur", validatePassword);
-        confirmPasswordInput.addEventListener("blur", validateConfirmPassword);
+        usernameInput.addEventListener("change", validateUsername);
+        emailInput.addEventListener("change", validateEmail);
+        passwordInput.addEventListener("change", validatePassword);
+        passwordIConfirmInput.addEventListener("change", validatePasswordConfirm);
 
-        const usernameValue = usernameInput.value.trim();
         function validateUsername() {
-            if (usernameValue === "") {
-                usernameInput.classList.add("error");
-                usernameError.textContent = "Username cannot be empty";
-                return false; // Return false to indicate invalid input
-            } else {
-                usernameInput.classList.remove("error");
-                usernameInput.classList.add("success");
-                usernameError.textContent = "";
-                return true; // Return true to indicate valid input
+            let usernameValue = usernameInput.value.trim();
+            if (usernameValue === "" || usernameValue == null) {
+                inputControl[0].classList.add("error");
+                usernameErrorMsg.innerHTML = "Cannot leave empty";
+                return false;
+            }
+            else {
+                inputControl[0].classList.remove("error");
+                inputControl[0].classList.add("success");
+                usernameErrorMsg.innerHTML = "";
+                return true;
             }
         }
 
-        // Function to validate the email field
         function validateEmail() {
-            const emailValue = emailInput.value.trim();
-            const emailRegex = /^[a-zA-Z0-9._-]+@$/;
-            if (emailValue === "") {
-                emailInput.classList.add("error");
-                emailError.textContent = "Email cannot be empty";
+            let emailValue = emailInput.value.trim();
+            let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (emailValue === "" || emailValue == null) {
+                inputControl[1].classList.add("error");
+                emailErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
-            } else if (!emailRegex.test(emailValue)) {
-                emailInput.classList.add("error");
-                emailError.textContent = "Invalid email format";
+            }
+            else if (!emailRegex.test(emailValue)) {
+                inputControl[1].classList.add("error");
+                emailErrorMsg.innerHTML = "Invalid email format";
                 return false;
-            } else {
-                emailInput.classList.remove("error");
-                emailError.textContent = "";
-                emailInput.classList.add("success");
+            }
+
+            else {
+                inputControl[1].classList.remove("error");
+                inputControl[1].classList.add("success");
+                emailErrorMsg.innerHTML = "";
                 return true;
             }
         }
 
-        // Function to validate the password field
         function validatePassword() {
-            const passwordValue = passwordInput.value;
-            if (passwordValue === "" || passwordValue.length < 8) {
-                passwordInput.classList.add("error");
-                passwordError.textContent = "Password must be at least 8 characters long";
+            let passwordValue = passwordInput.value.trim();
+            if (passwordValue === "" || passwordValue == null) {
+                inputControl[2].classList.add("error");
+                passwordErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
-            } else {
-                passwordInput.classList.remove("error");
-                passwordError.textContent = "";
-                passwordInput.classList.add("success");
+            }
+            else if (passwordValue.length < 8) {
+                inputControl[2].classList.add("error");
+                passwordErrorMsg.innerHTML = "Password must be at least 8 characters long";
+                return false;
+            }
+            else {
+                inputControl[2].classList.remove("error");
+                inputControl[2].classList.add("success");
+                passwordErrorMsg.innerHTML = "";
                 return true;
             }
         }
 
-        // Function to validate the confirm password field
-        function validateConfirmPassword() {
-            const confirmPasswordValue = confirmPasswordInput.value;
-            if (confirmPasswordValue === "" || confirmPasswordValue !== passwordInput.value) {
-                confirmPasswordInput.classList.add("error");
-                confirmPasswordError.textContent = "Passwords do not match";
+        function validatePasswordConfirm() {
+            let passwordConfirmValue = passwordIConfirmInput.value.trim();
+            let passwordValue = passwordInput.value.trim();
+            if (passwordConfirmValue === "" || passwordConfirmValue == null) {
+                inputControl[3].classList.add("error");
+                passwordConfirmErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
-            } else {
-                confirmPasswordInput.classList.remove("error");
-                confirmPasswordError.textContent = "";
-                confirmPasswordInput.classList.add("success");
+            }
+            else if (passwordValue !== passwordConfirmValue) {
+                inputControl[3].classList.add("error");
+                passwordConfirmErrorMsg.innerHTML = "";
+                passwordConfirmErrorMsg.innerHTML = "Password don't match";
+                return false;
+            }
+            else {
+                inputControl[3].classList.remove("error");
+                inputControl[3].classList.add("success");
+                passwordConfirmErrorMsg.innerHTML = "";
                 return true;
             }
         }
+
 
     </script>
 </body>
