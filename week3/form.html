@@ -68,9 +68,6 @@ block-level display, font size, padding, full width */
             font-size: 12px;
             /* Text size within the input field */
             padding: 10px;
-            /* Space inside the input field */
-            width: 100%;
-            /* Input field takes up 100% of the form's width */
         }
 
         /* Remove focus outline from input fields */
@@ -93,20 +90,38 @@ block-level display, font size, padding, full width */
     <form id="form" action="#">
         <h1>Contact Form</h1>
         <div class="input-control">
-            <label for="username"> username:</label>
-            <input type="text" id="username" name="username" value="">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="">
-            <label for="password">Password:</label>
-            <input type="text" id="password" name="password" value="">
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="text" id="confirmPassword" name="confirmPassword" value="">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+            <div class="error" id="username-error"></div>
+        </div>
+        <div class="input-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <div class="error" id="email-error"></div>
+        </div>
+        <div class="input-control">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <div class="error" id="password-error"></div>
+        </div>
+        <div class="input-control">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password">
+            <div class="error" id="confirm-password-error"></div>
         </div>
         <button>Submit</button>
     </form>
 
     <script>
-
+        const form = document.getElementById("registration-form");
+        const usernameInput = document.getElementById("username");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirm-password");
+        const usernameError = document.getElementById("username-error");
+        const emailError = document.getElementById("email-error");
+        const passwordError = document.getElementById("password-error");
+        const confirmPasswordError = document.getElementById("confirm-password-error");
     </script>
 </body>
 
