@@ -88,6 +88,7 @@
     </div>
 
     <script>
+        //creating variables to store username, email, password and passwordConfirm input text fields and error display areas. 
         const usernameInput = document.getElementById("username");
         const usernameErrorMsg = document.getElementById("usernameError")
 
@@ -100,30 +101,32 @@
         const passwordIConfirmInput = document.getElementById("passwordConfirm");
         const passwordConfirmErrorMsg = document.getElementById("passwordConfirmError")
 
-        const inputControl = document.getElementsByClassName("input-control");
+        const inputControl = document.getElementsByClassName("input-control"); //Storing the container of the input and error display area
 
-        const form = document.querySelector('form');
+        const form = document.querySelector('form'); //Storing form in a variable to be used form submission prevention
 
         //    Prevention of form submission when inputs are invalid.
         form.addEventListener("submit", function (event) {
-            if (!validateUsername() || !validateEmail() || !validatePassword() || !validatePasswordConfirm()) {
+            if (!validateUsername() || !validateEmail() || !validatePassword() || !validatePasswordConfirm()) { //check if all inputs are valid
                 event.preventDefault();
             }
         });
 
+        //calling respective validation functions each time user changes input
         usernameInput.addEventListener("change", validateUsername);
         emailInput.addEventListener("change", validateEmail);
         passwordInput.addEventListener("change", validatePassword);
         passwordIConfirmInput.addEventListener("change", validatePasswordConfirm);
 
+        //function that validates username input, displays error message if needed and return true when input is valid
         function validateUsername() {
-            let usernameValue = usernameInput.value.trim();
-            if (usernameValue === "" || usernameValue == null) {
+            let usernameValue = usernameInput.value.trim(); //remove spaces from user input
+            if (usernameValue === "" || usernameValue == null) { // show error if empty
                 inputControl[0].classList.add("error");
                 usernameErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
             }
-            else {
+            else { //remove error displays and show success 
                 inputControl[0].classList.remove("error");
                 inputControl[0].classList.add("success");
                 usernameErrorMsg.innerHTML = "";
@@ -131,22 +134,23 @@
             }
         }
 
+        //function that validates email input, displays error message if needed and return true when input is valid
         function validateEmail() {
-            let emailValue = emailInput.value.trim();
+            let emailValue = emailInput.value.trim(); //remove spaces from user input
             let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-            if (emailValue === "" || emailValue == null) {
+            if (emailValue === "" || emailValue == null) { //show error if left empty
                 inputControl[1].classList.add("error");
                 emailErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
             }
-            else if (!emailRegex.test(emailValue)) {
+            else if (!emailRegex.test(emailValue)) { //show error if format not right
                 inputControl[1].classList.add("error");
                 emailErrorMsg.innerHTML = "Invalid email format";
                 return false;
             }
 
-            else {
+            else { //show success when input it valid
                 inputControl[1].classList.remove("error");
                 inputControl[1].classList.add("success");
                 emailErrorMsg.innerHTML = "";
@@ -154,18 +158,20 @@
             }
         }
 
+        //function that validates password input, displays error message if needed and return true when input is valid
         function validatePassword() {
-            let passwordValue = passwordInput.value.trim();
-            if (passwordValue === "" || passwordValue == null) {
+            let passwordValue = passwordInput.value.trim(); //remove spaces from user input
+            if (passwordValue === "" || passwordValue == null) { //show error when left empty
                 inputControl[2].classList.add("error");
                 passwordErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
             }
-            else if (passwordValue.length < 8) {
+            else if (passwordValue.length < 8) { //show error when password less than 8 digits
                 inputControl[2].classList.add("error");
                 passwordErrorMsg.innerHTML = "Password must be at least 8 characters long";
                 return false;
             }
+            // show sucess when password is valid
             else {
                 inputControl[2].classList.remove("error");
                 inputControl[2].classList.add("success");
@@ -173,21 +179,26 @@
                 return true;
             }
         }
-
+        //function that validates confirmPassword input, displays error message if needed and return true when input is valid
         function validatePasswordConfirm() {
+            //remove spaces from both password user inputs
             let passwordConfirmValue = passwordIConfirmInput.value.trim();
             let passwordValue = passwordInput.value.trim();
+
+            //show error if left empty
             if (passwordConfirmValue === "" || passwordConfirmValue == null) {
                 inputControl[3].classList.add("error");
                 passwordConfirmErrorMsg.innerHTML = "Cannot leave empty";
                 return false;
             }
+            //show error if passwords don't match
             else if (passwordValue !== passwordConfirmValue) {
                 inputControl[3].classList.add("error");
                 passwordConfirmErrorMsg.innerHTML = "";
                 passwordConfirmErrorMsg.innerHTML = "Password don't match";
                 return false;
             }
+            //show success when password valid
             else {
                 inputControl[3].classList.remove("error");
                 inputControl[3].classList.add("success");
