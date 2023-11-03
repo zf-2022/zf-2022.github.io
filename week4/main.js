@@ -1,22 +1,21 @@
 var cityContainer = document.getElementById("city-info");
-var button = document.getElementById("btn");
-
-button.addEventListener("click", displayCitiesInfo);
-
-function displayCitiesInfo() {
+var btn = document.getElementById("btn");
+btn.addEventListener("click", function () {
     var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'https://github.com/zf-2022/zf-2022.github.io/blob/main/week4/cities1.json');
+    ourRequest.open('GET', 'https://zf-2022.github.io/week4/cities1.json');
     ourRequest.onload = function () {
-        var ourData = JSON.parse(ourRequest.responseText);
-        console.log(ourData[0]);
-        renderHTML(ourData);
-    };
-
+        var ourData = JSON.parse(ourRequest.responseText)
+        renderHTML(ourData)
+        btn.classList.add("hide-me");
+    }
     ourRequest.send();
-};
-
+});
 function renderHTML(data) {
-    var htmlString = "this is a test";
+    var htmlString = "";
+    for (i = 0; i < data.length; i++) {
+        htmlString += "<p>" + data[i].name + " is a city in " + data[i].country + ".</p>"
+            ;
+    }
     cityContainer.insertAdjacentHTML('beforeend', htmlString);
-}
 
+};
