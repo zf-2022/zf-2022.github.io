@@ -29,15 +29,9 @@ const pubilcDriectory = path.join(__dirname, './public');
 app.use(express.static(pubilcDriectory));
 app.set('view engine', 'hbs');
 
-
-app.get("/", (req, res) => {
-    //res.send("<h1> HELLO WORLD </h1>")
-    res.render("index");
-});
-
-app.get("/register", (req, res) => {
-    res.render("register");
-});
+//define routes
+app.use("/", require("./routes/pages"))
+app.use("/auth", require("./routes/auth"))
 
 app.listen(port, () => {
     console.log("server started on port ${port}");
