@@ -37,3 +37,7 @@ nav li a:hover {
     width: 65%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+.card-body {
+    margin: auto;
+}
