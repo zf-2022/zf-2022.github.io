@@ -3,6 +3,9 @@ const mysql = require("mysql");
 const dotenv = require("dotenv");
 const path = require("path");
 const exp = require("constants");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
 
 const port = 5000;
 
@@ -31,7 +34,8 @@ const pubilcDriectory = path.join(__dirname, './public');
 app.use(express.static(pubilcDriectory));
 app.set('view engine', 'hbs');
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 //define routes
 app.use("/", require("./routes/pages"));
